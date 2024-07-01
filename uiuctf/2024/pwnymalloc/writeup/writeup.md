@@ -8,7 +8,7 @@
 
 - Cả 2 cách `complaint` hay `status` đều không có heap overflow. Bản thân `complaint` cũng memset về 0 sau khi free, chương trình cũng không quản lí heap theo cách thông thường
 
-- Ở đây vài điểm mình ý ở hàm free:
+- Ở đây có vài điểm mình để ý ở hàm free:
     - ![alt text](image.png)
     - Hàm free sẽ check align của block được free, nếu không align thì sẽ không free
     - Sau khi free block thì sẽ gộp với các block free liền trước và liền sau bằng hàm `coalesce`
