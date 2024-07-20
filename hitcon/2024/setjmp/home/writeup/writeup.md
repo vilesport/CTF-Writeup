@@ -1,0 +1,4 @@
+- Challenge này cho phép chúng ta tạo và xóa user qua `malloc` và `free`, các user được quản lí thông qua `linked list`
+- Tuy nhiên bug `use after free` xuất hiện khi `free` user đang ở đầu `linked list` và nếu user đó là duy nhất thì sau khi `free` vẫn có thể `view` và `edit`
+- Vây nên mình dùng `use after free` để double 1 chunk lấy `heap address`, từ đó thay đổi 1 `chunk size` thành `0x441`, sau đó spray chunk để khiến size allign và `free` thì có được `libc address`
+- Cuối cùng, vì libc challenge dùng libc ver 2.31 nên ghi đè `_free_hook` thành địa chỉ của `_system`, malloc 1 chunk có tên là `/bin/sh` và free là có được shell
